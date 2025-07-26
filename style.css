@@ -8,11 +8,17 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f0f4f8;
   color: #333;
+  scroll-behavior: smooth;
 }
 
 a {
   color: #5a00cc;
   text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #0033cc;
 }
 
 header.hero {
@@ -20,12 +26,14 @@ header.hero {
   color: white;
   padding: 40px 20px;
   text-align: center;
+  animation: fadeSlideDown 1.2s ease-out;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
 }
 
 .profile-pic {
@@ -34,7 +42,7 @@ header.hero {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid white;
-  margin-bottom: 20px;
+  animation: fadeIn 1.5s ease-in;
 }
 
 .container {
@@ -49,6 +57,13 @@ header.hero {
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  animation: fadeInUp 1s ease-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
 .card h2 {
@@ -74,4 +89,37 @@ footer {
   border-top: 1px solid #ddd;
   font-size: 14px;
   color: #555;
+  animation: fadeIn 1s ease-in;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
